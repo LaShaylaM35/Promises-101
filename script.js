@@ -1,4 +1,4 @@
-let baseUrl = `https://api.open-meteo.com/v1/forecast?latitude=${currentWeather}&longitude=${currentWeather}&current_weather=true`;
+
 
 
 
@@ -10,14 +10,14 @@ async function currentWeather(){
 
     let longitude = document.getElementById("longitude").value;
     let latitude = document.getElementById("latitude").value;
-    let url = `${baseUrl}${currentWeather}`;
+    let baseUrl = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current_weather=true`;
     
 
-    let response = await fetch(url);
+    let response = await fetch(baseUrl);
     let data = await response.json();
 
     let currentWeather = document.getElementById("current_weather");
-    currentWeather.textContent = `${data.current_weather}`;
+    currentWeather.textContent = `Current Weather Is:${data.current_weather.temperature}`;
 
     
 }
